@@ -9,7 +9,6 @@ public class MessageTest {
 
     @BeforeEach
     public void setUp() {
-        //clear all arrays and reset counter before each test
         Message.sentMessages.clear();
         Message.disregardedMessages.clear();
         Message.storedMessages.clear();
@@ -18,7 +17,7 @@ public class MessageTest {
         Message.totalMessagesSent = 0;
     }
 
-    //test 1 - sent messages array is correctly populated with test data
+    //test 1 sent messages array is correctly populated with test data
     @Test
     public void testSentMessagesArrayPopulated() {
         Message msg1 = new Message("+27608294678", "Hey, Call me when your free.");
@@ -32,7 +31,7 @@ public class MessageTest {
         assertEquals("Hey, how are you", Message.sentMessages.get(1).getMessage());
     }
 
-    //test 2 - display the longest message
+    //test 2 display the longest message
     @Test
     public void testLongestMessage() {
         Message msg1 = new Message("+27608294678", "Hey, Call me when your free.");
@@ -64,7 +63,7 @@ public class MessageTest {
         assertEquals("Hey, Call me when your free.", longest.getMessage());
     }
 
-    //test 3 - search for a message by ID returns correct message
+    //test 3 search for a message by ID returns correct message
     @Test
     public void testSearchByMessageID() {
         Message msg1 = new Message("+27608294678", "Hey, Call me when your free.");
@@ -90,7 +89,7 @@ public class MessageTest {
         assertTrue(found);
     }
 
-    //test 4 - search all messages for a particular recipient
+    //test 4 search all messages for a particular recipient
     @Test
     public void testSearchByRecipient() {
         Message msg1 = new Message("+27608294678", "Hey, Call me when your free.");
@@ -121,7 +120,7 @@ public class MessageTest {
         assertTrue(results.contains("Hello, Are you good ?"));
     }
 
-    //test 5 - delete a message using its message hash
+    //test 5 delete a message using its message hash
     @Test
     public void testDeleteByHash() {
         Message msg1 = new Message("+27608294678", "Hey, Call me when your free.");
@@ -143,7 +142,7 @@ public class MessageTest {
         assertEquals(sizeBefore - 1, Message.storedMessages.size());
     }
 
-    //test 6 - display report shows all messages with hash recipient and message
+    //test 6 display report shows all messages with hash recipient and message
     @Test
     public void testDisplayReport() {
         Message msg1 = new Message("+27608294678", "Hey, Call me when your free.");
@@ -176,14 +175,14 @@ public class MessageTest {
         }
     }
 
-    //test 7 - message under 250 chars passes validation
+    //test 7 message under 250 chars passes validation
     @Test
     public void testMessageUnder250() {
         Message msg = new Message("+27608294678", "Hey, Call me when your free.");
         assertEquals("Message ready to send.", msg.validateMessage());
     }
 
-    //test 8 - message over 250 chars fails validation
+    //test 8 message over 250 chars fails validation
     @Test
     public void testMessageOver250() {
         String longMsg = "";
@@ -194,21 +193,21 @@ public class MessageTest {
         assertTrue(msg.validateMessage().startsWith("Message exceeds 250 characters by"));
     }
 
-    //test 9 - valid cell number is accepted
+    //test 9 valid cell number is accepted
     @Test
     public void testValidCellNumber() {
         Message msg = new Message("+27608294678", "Hey, Call me when your free.");
         assertEquals("Cell phone number successfully captured.", msg.checkRecipientCell());
     }
 
-    //test 10 - number without international code is rejected
+    //test 10 number without international code is rejected
     @Test
     public void testNoInternationalCode() {
         Message msg = new Message("0608294678", "Hey, how are you");
         assertEquals("Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.", msg.checkRecipientCell());
     }
 
-    //test 11 - message hash has 3 parts
+    //test 11 message hash has 3 parts
     @Test
     public void testHashHas3Parts() {
         Message msg = new Message("+27608294678", "Hey, Call me when your free.");
@@ -216,7 +215,7 @@ public class MessageTest {
         assertEquals(3, parts.length);
     }
 
-    //test 12 - message hash last part is HEY,FREE
+    //test 12 message hash last part is HEY,FREE
     @Test
     public void testHashLastPart() {
         Message msg = new Message("+27608294678", "Hey, Call me when your free.");
@@ -224,7 +223,7 @@ public class MessageTest {
         assertEquals("HEY,FREE", parts[2]);
     }
 
-    //test 13 - message ID is exactly 10 digits
+    //test 13 message ID is exactly 10 digits
     @Test
     public void testMessageIDLength() {
         Message msg = new Message("+27608294678", "Hey, Call me when your free.");
@@ -232,21 +231,21 @@ public class MessageTest {
         assertTrue(msg.checkMessageID());
     }
 
-    //test 14 - send option returns correct message
+    //test 14 send option returns correct message
     @Test
     public void testSendOption() {
         Message msg = new Message("+27608294678", "Hey, Call me when your free.");
         assertEquals("Message successfully sent.", msg.SentMessage(1));
     }
 
-    //test 15 - disregard option returns correct message
+    //test 15 disregard option returns correct message
     @Test
     public void testDisregardOption() {
         Message msg = new Message("+27608294678", "Hello, Are you good ?");
         assertEquals("Press 0 to delete the message.", msg.SentMessage(2));
     }
 
-    //test 16 - store option returns correct message
+    //test 16 store option returns correct message
     @Test
     public void testStoreOption() {
         Message msg = new Message("+27608294678", "Hello, How are you.");
