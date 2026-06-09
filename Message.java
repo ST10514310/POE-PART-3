@@ -251,7 +251,7 @@ public class Message {
         }
     }
 
-    //helper to get a value from a json line by key
+    //User to get a value from a json line by key
     private static String getJsonValue(String json, String key) {
         String search = "\"" + key + "\":\"";
         int start = json.indexOf(search);
@@ -478,7 +478,7 @@ public class Message {
 
     public static void sendMessage(Scanner input) {
 
-        //keep asking for a number until they give a valid one
+        //keep asking user for a number until they give a valid one
         String cellNum = "";
         boolean numOk = false;
         while (numOk == false) {
@@ -494,7 +494,7 @@ public class Message {
             }
         }
 
-        //keep asking for a message until its under 250 chars
+        //keep asking user for a message until its under 250 chars
         String msg = "";
         boolean msgOk = false;
         while (msgOk == false) {
