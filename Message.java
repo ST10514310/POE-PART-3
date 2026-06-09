@@ -145,8 +145,7 @@ public class Message {
             }
             x++;
         }
-
-        //put it all together and make uppercase
+        
         String hash = first2 + ":" + numMessagesSent + ":" + firstWord + cleanWord;
         hash = hash.toUpperCase();
 
@@ -179,7 +178,7 @@ public class Message {
             return "No messages sent yet.";
         }
 
-        //using a for loop to go through all sent messages
+        //Usage of for loop to go through all sent messages
         String result = "";
         for (int i = 0; i < sentMessages.size(); i++) {
             Message m = sentMessages.get(i);
