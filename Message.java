@@ -87,7 +87,6 @@ public class Message {
     private String message;
     private String messageHash;
 
-    //arrays for Part 3
     static ArrayList<Message> sentMessages = new ArrayList<Message>();
     static ArrayList<Message> disregardedMessages = new ArrayList<Message>();
     static ArrayList<Message> storedMessages = new ArrayList<Message>();
