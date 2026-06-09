@@ -118,6 +118,7 @@ public class Message {
         }
     }
 
+    //Regex to format a local SA number to international, const internationalNumber = localNumber.replace(/^0/, '+27');
     public String checkRecipientCell() {
         if (recipient.startsWith("+") && recipient.length() <= 13) {
             return "Cell phone number successfully captured.";
